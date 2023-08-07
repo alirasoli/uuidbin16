@@ -9,6 +9,23 @@ go get github.com/alirasoli/uuidbin16
 
 Convert uuid strings to uuidbin16 type:
 ```go
-var uuidbin uuidbin16.StringToBin16(uuid)
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/alirasoli/uuidbin16"
+	"github.com/google/uuid"
+)
+
+func main() {
+	uuidbin16, err := uuidbin16.StringToBin16(uuid.New().String())
+	if err != nil {
+		log.Fatal(err)
+	}
+	u := uuidbin16.String()
+	fmt.Println(u)
+}
 ```
 And then you can define your database models with this type and it handles sql part for you.
